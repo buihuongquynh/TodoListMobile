@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity, TextInput} from 'react-native';
 const useTodo = () => {
   const [name, setName] = useState('');
+  const [edit, setEdit] = useState(false);
   const [data, setData] = useState([
     {
       name: 'truong',
@@ -24,11 +25,15 @@ const useTodo = () => {
     return setData([...data, {name}]);
   };
   const deleteTodo = name => {
+   
      var NewData =  data.filter(item=> item.name != name)
-     return setData(NewData);
+     console.log(NewData)
+     return setData([...NewData]);
   };
-  const editTodo = name => {
 
+  const editTodo = () => {
+    setEdit(true)
+    console.log(edit)
   }
   return {
     data,
@@ -36,6 +41,8 @@ const useTodo = () => {
     name,
     setName,
     deleteTodo,
+    editTodo,
+    edit,
   };
 };
 export default useTodo;

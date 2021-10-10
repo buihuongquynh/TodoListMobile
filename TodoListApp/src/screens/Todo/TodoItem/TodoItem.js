@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './TodoItem.styles';
 import useTodo from '../useTodo';
 const TodoItem = ({user}) => {
-  const {deleteTodo} = useTodo();
+  const {deleteTodo, editTodo} = useTodo();
   return (
     <View style={styles.Item}>
       <Image style={styles.Image} source={{uri: user.img}} />
@@ -24,7 +24,7 @@ const TodoItem = ({user}) => {
 
       <TouchableOpacity
         onPress={() => {
-          deleteTodo(user.name);
+          editTodo();
         }}>
         <View>
           <Image
